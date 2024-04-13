@@ -1,0 +1,145 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600;700;800;900&family=Poppins:wght@200;300;400;500;600;800;900&display=swap");
+
+body {
+  font-family: "Montserrat", sans-serif !important;
+  letter-spacing: 0.5px;
+}
+
+::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f8f8f8;
+  border-radius: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(73, 75, 116, 0.527);
+  border-radius: 8px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(73, 75, 116, 1);
+  border-radius: 8px;
+}
+// CANCEL BUTTON
+.cancel-btn {
+  padding: 10px 20px;
+  @media (min-width: 1366px) {
+    padding: 7px 14px;
+  }
+  border-radius: 8px;
+  color: rgba(137, 150, 162, 1);
+
+  &__text {
+    font-size: 14px;
+    font-weight: 500;
+    color: rgba(137, 150, 162, 1);
+  }
+}
+
+// DEFAULT BUTTON
+.default-btn {
+  padding: 10px 20px;
+  @media (min-width: 1366px) {
+    padding: 7px 14px;
+  }
+  border-radius: 8px;
+  &__icon {
+    width: 20px;
+    height: 20px;
+    color: $primary;
+    margin-right: 5px;
+  }
+  &__text {
+    font-size: 14px;
+    font-weight: 500;
+    color: $primary;
+  }
+}
+
+// EXPORT BUTTON
+.export-btn {
+  border-radius: 8px;
+  &__icon {
+    color: $grey-dark;
+    margin-right: 5px;
+  }
+  &__text {
+    font-size: 14px;
+    font-weight: 500;
+    color: $grey-dark;
+  }
+}
+// ANOTHER
+.another-btn {
+  padding: 10px 20px;
+  @media (min-width: 1366px) {
+    padding: 7px 14px;
+  }
+  border-radius: 8px;
+  color: $primary;
+
+  &__text {
+    font-size: 14px;
+    font-weight: 500;
+    color: $primary;
+  }
+}
+
+// TITLE
+.title {
+  font-size: 14px;
+  @media (min-width: 1601px) {
+    font-size: 16px;
+  }
+  font-weight: 600;
+}
+
+// SUBTITLE
+.subtitle {
+  font-size: 16px;
+  font-weight: 500;
+}
+
+// LABEL
+.label {
+  font-size: 14px;
+  color: rgba(139, 144, 154, 1);
+  line-height: 16.8px;
+}
+
+.form-label {
+  font-size: 14px;
+  color: rgba(3, 22, 51, 1);
+  line-height: 16.8px;
+}
+
+// INPUT-LABEL
+.input-label {
+  font-size: 14px;
+  line-height: 18px;
+}
+
+.q-field--outlined .q-field__control {
+  border-radius: 8px;
+}
+
+.q-field--outlined .q-field__control:before {
+  border-color: #cfd9fe;
+}
+
+input::placeholder {
+  color: #8996a2 !important;
+}
+
+.q-field--disabled .q-field__control {
+  background-color: #f0f2f5;
+  & input {
+    color: #000;
+    font-size: 14px;
+    line-height: 16.8px;
+  }
+}
