@@ -30,7 +30,7 @@ function createInstance(baseURL: string, type: string) {
         axios
           .post(
             env.VITE_APP_API_URL + "auth/refresh",
-            { refreshToken: refreshToken },
+            { refresh: refreshToken },
             {
               headers: {
                 ...headers,
