@@ -30,7 +30,7 @@ router.beforeEach((to: any, _, next) => {
   if (!isGuest && !isAuthenticated) {
     next({ name: "Authorization" });
   } else if (isGuest && isAuthenticated) {
-    next({ name: "dashboard" });
+    next({ name: "products" });
   } else next();
 });
 

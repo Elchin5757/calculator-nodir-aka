@@ -18,7 +18,7 @@ const showPassword = ref(false);
 
 function onSubmit() {
   login({ username: email.value, password: password.value }).then(() => {
-    router.push({ name: "/" });
+    router.push({ name: "products" });
   });
 }
 </script>
