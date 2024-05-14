@@ -42,10 +42,7 @@ body {
 
 // DEFAULT BUTTON
 .default-btn {
-  padding: 10px 20px;
-  @media (min-width: 1366px) {
-    padding: 7px 14px;
-  }
+
   border-radius: 8px;
   &__icon {
     width: 20px;

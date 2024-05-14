@@ -29,7 +29,7 @@ function createInstance(baseURL: string, type: string) {
       if (error.response?.status === 401 && refreshToken) {
         axios
           .post(
-            env.VITE_APP_API_URL + "auth/refresh",
+            env.VITE_APP_API_URL + "auth-refresh/",
             { refresh: refreshToken },
             {
               headers: {
