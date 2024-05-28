@@ -15,7 +15,7 @@ export const products = [
       {
         path: "table",
         name: "table",
-        component: () => import("./index.vue"),
+        component: () => import("./table.vue"),
       },
       {
         path: "crud",

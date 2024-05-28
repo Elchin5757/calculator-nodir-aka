@@ -2,22 +2,22 @@ import { useGet, usePost } from "@/shared/api";
 import { defineStore } from "pinia";
 import { useNotificationStore } from "@/stores/notification";
 
-export const useProducts = defineStore("products", {
+export const useOrders = defineStore("orders", {
   state: () => ({
-    products: [],
-    productsLoading: false,
+    orders: [],
+    tableLoading: false,
     createLoading: false,
   }),
   actions: {
-    async getProducts() {
+    async getOrders() {
       const notificationStore = useNotificationStore();
-      this.productsLoading = true;
+      this.tableLoading = true;
       return await useGet({
-        url: "products/",
+        url: "order/",
       })
         .then((res: any) => {
           if (res?.status === 200) {
-            this.products = res?.data;
+            this.orders = res?.data;
             return res;
           }
         })
@@ -25,21 +25,24 @@ export const useProducts = defineStore("products", {
           notificationStore.setNotification(error.message, "error", "negative");
         })
         .finally(() => {
-          this.productsLoading = false;
+          this.tableLoading = false;
         });
     },
-    async createProduct(data: any) {
+    async createOrder(data: any) {
       const notificationStore = useNotificationStore();
       this.createLoading = true;
       return await usePost({
-        url: "products/",
+        url: "orders/",
         data,
       })
         .then((res: any) => {
           if (res?.status === 201) {
-            notificationStore.setNotification("Maxsulot muvaffaqiyatli qo'shildi", "verified", "positive");
+            notificationStore.setNotification(
+              "Buyurtma muvaffaqiyatli qo'shildi",
+              "verified",
+              "positive"
+            );
             return res;
-
           }
         })
         .catch((error: any) => {

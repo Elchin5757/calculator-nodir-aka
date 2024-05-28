@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { storeToRefs } from "pinia";
-import { useProducts } from "./store";
+import { useOrders } from "./store";
 import { onMounted, ref } from "vue";
 import BaseIcon from "@/shared/components/BaseIcon/index.vue";
 
@@ -27,12 +27,12 @@ const pagination = {
 };
 
 // store
-const store = useProducts();
-const { products, productsLoading }: any = storeToRefs(store);
-const { getProducts } = store;
+const store = useOrders();
+const { orders, tableLoading }: any = storeToRefs(store);
+const { getOrders } = store;
 
 function searchProduct(value: any): void {
-  clonedProducts.value = products.value.filter(
+  clonedProducts.value = orders.value.filter(
     (product: { name: string; price: number }) => {
       return product.name.toLowerCase().includes(value.toLowerCase());
     }
@@ -41,15 +41,16 @@ function searchProduct(value: any): void {
 
 // hooks
 onMounted(async () => {
-  await getProducts();
-  clonedProducts.value = products.value;
+  await getOrders();
+  clonedProducts.value = orders.value;
 });
 </script>
+
 <template>
   <q-table
     :rows="clonedProducts"
     :columns="columns"
-    :loading="productsLoading"
+    :loading="tableLoading"
     
     rows-per-page-label="Sahifadagi qatorlar soni"
     row-key="id"
@@ -67,11 +68,11 @@ onMounted(async () => {
           outline
           color="grey"
           class="default-btn q-mb-md"
-          to="/products/crud"
+          to="/crud"
           style="width: 100%; background-color: rgba(26, 92, 206, 0.1) !important;"
         >
           <BaseIcon name="add" category="global" class="default-btn__icon" />
-          <span class="default-btn__text">Maxsulot qo'shish</span>
+          <span class="default-btn__text">Buyurtma qo'shish</span>
         </q-btn>
         <q-input
           input-class="search_input"
@@ -93,33 +94,6 @@ onMounted(async () => {
 </template>
 
 <style lang="scss">
-// .custom-table {
-//   thead tr:first-child th {
-//     background-color: white;
-//     font-weight: 600;
-//     font-size: 13px;
-//     line-height: 24px;
-//     text-transform: uppercase;
-//   }
-
-//   thead tr th {
-//     position: sticky;
-//     z-index: 1;
-//   }
-
-//   thead tr:first-child th {
-//     top: 0;
-//   }
-
-//   &.q-table--loading thead tr:last-child th {
-//     top: 48px;
-//   }
-
-//   tbody {
-//     scroll-margin-top: 48px;
-//   }
-// }
-
 .search_input {
   width: 100% !important;
 }
