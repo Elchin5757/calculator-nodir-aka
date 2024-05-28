@@ -1,4 +1,4 @@
-import { useGet } from "@/shared/api";
+import { useGet, usePost } from "@/shared/api";
 import { defineStore } from "pinia";
 import { useNotificationStore } from "@/stores/notification";
 
@@ -6,6 +6,7 @@ export const useProducts = defineStore("applications", {
   state: () => ({
     products: [],
     productsLoading: false,
+    createLoading: false,
   }),
   actions: {
     async getProducts() {
@@ -25,6 +26,27 @@ export const useProducts = defineStore("applications", {
         })
         .finally(() => {
           this.productsLoading = false;
+        });
+    },
+    async createProduct(data: any) {
+      const notificationStore = useNotificationStore();
+      this.createLoading = true;
+      return await usePost({
+        url: "products/",
+        data,
+      })
+        .then((res: any) => {
+          if (res?.status === 201) {
+            notificationStore.setNotification("Maxsulot muvaffaqiyatli qo'shildi", "verified", "positive");
+            return res;
+
+          }
+        })
+        .catch((error: any) => {
+          notificationStore.setNotification(error.message, "error", "negative");
+        })
+        .finally(() => {
+          this.createLoading = false;
         });
     },
   },
